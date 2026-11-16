@@ -1,6 +1,7 @@
 import { ArrowRightIcon, PlayIcon, ZapIcon, CheckIcon } from "lucide-react";
 import { PrimaryButton, GhostButton } from "./Buttons";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   const trustedUserImages = [
@@ -109,12 +110,12 @@ export default function Hero() {
                   delay: 0.3,
                 }}
               >
-                <a href="/" className="w-full sm:w-auto">
+                <Link href="/" className="w-full sm:w-auto">
                   <PrimaryButton className="max-sm:w-full py-3 px-7">
                     Únete a la comunidad APE
                     <ArrowRightIcon className="size-4" />
                   </PrimaryButton>
-                </a>
+                </Link>
 
                 <GhostButton className="max-sm:w-full max-sm:justify-center py-3 px-5">
                   <PlayIcon className="size-4" />

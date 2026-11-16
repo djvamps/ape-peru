@@ -1,16 +1,48 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Outfit", sans-serif;
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #7c3aed;
+  --color-secondary: #ec4899;
+  --color-dark-bg: #0f172a;
+  --color-dark-card: #1e293b;
+}
+
+/* Adaptación automática para Modo Claro (Light Mode) en Tailwind v4 */
+html:not(.dark) {
+  color-scheme: light;
+}
+
+html:not(.dark) .text-white {
+  color: #0f172a !important; /* slate-900 */
+}
+
+html:not(.dark) .text-gray-200,
+html:not(.dark) .text-gray-300 {
+  color: #334155 !important; /* slate-700 */
+}
+
+html:not(.dark) .text-gray-400 {
+  color: #475569 !important; /* slate-600 */
 }
 
 @layer base {
   body {
-    @apply bg-gray-950 text-white antialiased;
+    background-color: #030712;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html:not(.dark) body {
+    background-color: #f8fafc;
+    color: #0f172a;
   }
 
   button {
-    @apply cursor-pointer;
+    cursor: pointer;
   }
 }
 
@@ -18,7 +50,6 @@
   0% {
     transform: translateX(0%);
   }
-
   100% {
     transform: translateX(-50%);
   }
@@ -33,11 +64,9 @@
   0% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-5px);
   }
-
   100% {
     transform: translateY(0);
   }
@@ -47,17 +76,18 @@
   animation: float 5s ease-in-out infinite;
 }
 
-@theme {
-  --color-primary: #8b5cf6;
-  --color-primary-hover: #7c3aed;
-  --color-secondary: #ec4899;
-  --color-dark-bg: #0f172a;
-  --color-dark-card: #1e293b;
-}
-
 @layer utilities {
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  }
+
+  html:not(.dark) .glass-panel {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
   }
 
   .btn-secondary {

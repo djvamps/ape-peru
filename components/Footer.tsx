@@ -1,7 +1,7 @@
 "use client";
 import { footerLinks } from "@/data/dummy-data";
 import { motion } from "framer-motion";
-
+import Image from "next/image";
 export default function Footer() {
   return (
     <motion.footer
@@ -14,7 +14,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-white/10">
           <div>
-            <img src="/logo.svg" alt="logo" className="h-8" />
+          <div className="mb-4">
+  <Image src="/logo-light.svg" alt="APE Logo" width={120} height={32} className="h-8 w-auto dark:hidden" />
+  <Image src="/logo.svg" alt="APE Logo" width={120} height={32} className="h-8 w-auto hidden dark:block" />
+</div>
             <p className="max-w-[410px] mt-6 text-sm leading-relaxed">
               Organización sin fines de lucro que integra, representa y
               fortalece a los empresarios y emprendedores formales del Perú
